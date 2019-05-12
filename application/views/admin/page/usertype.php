@@ -38,41 +38,41 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
           </div>
           <!-- /.box-header -->
           <!-- form start -->
-        <form role="form" action="" method="post" autocomplete="off">
+        <form role="form"  method="post" autocomplete="off">
           <div class="box-body">
               <div class="col-md-4">
                 <div class="form-group">
                   <label>FirstName</label>
-                  <input class="form-control" placeholder="Enter FirstName" type="text" name="firstname" value="<?php if(!empty($update)) { echo $update['firstname']; } else { echo set_value('firstname'); } ?>">
+                  <input class="form-control" placeholder="Enter FirstName" type="text" name="firstname" >
                   <?php echo form_error('firstname'); ?>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>LastName</label>
-                  <input class="form-control" placeholder="Enter LastName" type="text" name="lastname" value="<?php if(!empty($update)) { echo $update['lastname']; } else { echo set_value('lastname'); } ?>">
+                  <input class="form-control" placeholder="Enter LastName" type="text" name="lastname" >
                   <?php echo form_error('lastname'); ?>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email </label>
-                  <input class="form-control" placeholder="Enter Email" type="email" name="email" value="<?php if(!empty($update)) { echo $update['email']; } else { echo set_value('email'); } ?>">
+                  <input class="form-control" placeholder="Enter Email" type="email" name="email" >
                   <?php echo form_error('email'); ?>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label>Mobile </label>
-                  <input class="form-control" placeholder="Enter Mobile" type="number" name="mobile" value="<?php if(!empty($update)) { echo $update['mobile']; } else { echo set_value('mobile'); } ?>">
-                  <?php echo form_error('mobile'); ?>
+                  <label>Password </label>
+                  <input class="form-control" placeholder="Enter Mobile" type="password" name="password" >
+                  <?php echo form_error('password'); ?>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label>Message </label>
-                  <textarea rows="4" cols="50" class="form-control" autocomplete="off" placeholder="Enter Message" type="text" name="message" value="<?php if(!empty($update)) { echo $update['message']; } else { echo set_value('message'); } ?>"></textarea>
-                  <?php echo form_error('message'); ?>
+                  <label>Address </label>
+                  <textarea rows="4" cols="50" class="form-control" autocomplete="off" placeholder="Enter Address" type="text" name="address" ></textarea>
+                  <?php echo form_error('address'); ?>
                 </div>
               </div>
               <div class="col-md-4">
@@ -85,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 </div>
                 <br><br><br><br><br>
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="submit" class="btn btn-primary" name="submit">Save</button>
               <a href="<?php echo base_url('') ?>" class="btn btn-warning">Back</a>
             </div>
           </form> 
@@ -129,28 +129,30 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                   <th>FirstName</th>
                   <th>LastName</th>
                   <th>Email</th>
-                  <th>Mobile</th>
-                  <th>Message</th>
+                  <th>Address</th>
+                  <th>status</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-               <?php if(!empty($data)){
-                  $i=1;
-                  foreach ($data as $key => $value) { ?>
+               <?php 
+                  if(!empty($query->result())){
+//query=$data['query'];
+                  $i=0;
+                  foreach ($query->result() as $key => $row) { ?>
                 <tr>
-                      <td><?php  echo $i++ ?></td>
-                      <td><?php echo $value['firstname'] ?></td>
-                       <td><?php echo $value['lastname'] ?></td>
-                      <td><?php echo $value['email'] ?></td>
-                      <td><?php echo $value['mobile']  ?></td>
-                      <td><?php echo $value['message'] ?></td>
+                      <td><?php  echo ++$i ?></td>
+                      <td><?php echo $row->firstname ?></td>
+                       <td><?php echo $row->lastname ?></td>
+                      <td><?php echo $row->email ?></td>
+                      <td><?php echo $row->address  ?></td>
+                      <td><?php echo ($row->status ? 'Active' :  'Unactive'); ?></td>
                       
                       
                       <td>
-                          <a href="<?php echo base_url() ?>user/contact_us/<?php echo $value['user_id'] ?>" title="EDIT" ><span class="label label-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a>
+                          <a href="<?php echo base_url() ?>user/contact_us/<?php echo $row->user_id ?>" title="EDIT" ><span class="label label-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span></a>
                           &nbsp;
-                          <a onclick="return confirm('Are you sure you want to delete this User?');" href="<?php echo base_url() ?>user/contactusDelete/<?php echo $value['user_id'] ?>" title="DELETE" ><span class="label label-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>
+                          <a onclick="return confirm('Are you sure you want to delete this User?');" href="<?php echo base_url() ?>user/delete?id=<?php echo $row->user_id ?>" title="DELETE" ><span class="label label-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></span></a>
 
                       </td>
                 </tr>

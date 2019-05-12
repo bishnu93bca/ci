@@ -33,7 +33,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo base_url();?>index.php/dashboard"><i class="fa fa-circle-o"></i>Dashboard</a></li>
+            <li class="active"><a href="<?php echo base_url();?>dashboard"><i class="fa fa-circle-o"></i>Dashboard</a></li>
 
           </ul>
           
@@ -45,8 +45,8 @@
             
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url(); ?>index.php/user/user_detail"><i class="fa fa-circle-o"></i>User Details</a></li>
-             <li><a href="<?php echo base_url(); ?>index.php/user/usertype"><i class="fa fa-circle-o"></i>User Type</a></li>
+            <li><a href="<?php echo base_url('user/user_detail'); ?>"><i class="fa fa-circle-o"></i>User Details</a></li>
+             <li><a href="<?php echo base_url('user/usertype'); ?>"><i class="fa fa-circle-o"></i>User Type</a></li>
           </ul>
           
         </li>

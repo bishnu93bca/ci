@@ -5,4 +5,4 @@
 <?php $this->load->view('admin/page/content');?>
 <?php $this->load->view('admin/page/footer');?>
 <?php $this->load->view('admin/page/controlebar');?>
-<?php $this->load->view('admin/page/javascript');?>
+<?php $this->load->view('admin/page/javascript');?> 

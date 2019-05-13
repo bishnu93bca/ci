@@ -22,23 +22,9 @@ class User extends CI_controller
 		
 		if (isset($_POST['submit'])) {
 
-			$config['upload_path']          = './uploads/';
-            $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 100;
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
-
-            $this->load->library('upload', $config);
-
-            if(!$this->upload->do_upload('userfile')){
-
-                $error = array('error' => $this->upload->display_errors());
-                
-            }else{
-
-                $data = array('upload_data' => $this->upload->data());
-                $this->load->view('upload_success', $data);
-            }
+			$image = $_FILES['upload']['name']; 
+			$image_tmp =$_FILES['upload']['tmp_name'];
+			move_uploaded_file($image_tmp,"uploads/$image");
 
 			$data = array(
 		        'firstname' => $this->input->post('firstname'),
@@ -46,7 +32,7 @@ class User extends CI_controller
 		        'email' 	=> $this->input->post('email'),
 		        'password'	=> $this->input->post('password'),
 		        'address'	=> $this->input->post('address'),
-		        'upload'	=> '',
+		        'upload'	=> $image,
 		        'status'	=>	'1'
 		    );
 			$this->db->insert('user_details', $data);

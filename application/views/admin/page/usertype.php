@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
           </div>
           <!-- /.box-header -->
           <!-- form start -->
-        <form role="form"  method="post" autocomplete="off">
+        <form role="form"  method="post" autocomplete="off" enctype="multipart/form-data">
           <div class="box-body">
               <div class="col-md-4">
                 <div class="form-group">
@@ -130,6 +130,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                   <th>LastName</th>
                   <th>Email</th>
                   <th>Address</th>
+                  <th>Image</th>
                   <th>status</th>
                   <th>Action</th>
                 </tr>
@@ -146,6 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                        <td><?php echo $row->lastname ?></td>
                       <td><?php echo $row->email ?></td>
                       <td><?php echo $row->address  ?></td>
+                      <td><img src="<?php echo base_url().'uploads/'.$row->upload  ?>" style="height:60px;width: 80px;"></td>
                       <td><?php echo ($row->status ? 'Active' :  'Unactive'); ?></td>
                       
                       

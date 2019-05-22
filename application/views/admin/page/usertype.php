@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Password </label>
-                  <input class="form-control" placeholder="Enter Mobile" type="password" name="password" >
+                  <input class="form-control" placeholder="Enter Password" type="password" name="password" >
                   <?php echo form_error('password'); ?>
                 </div>
               </div>
@@ -166,8 +166,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                   <th>FirstName</th>
                   <th>LastName</th>
                   <th>Email</th>
-                  <th>Mobile</th>
-                  <th>Message</th>
+                  <th>Address</th>
+                  <th>Image</th>
+                  <th>status</th>
                   <th>Action</th>
                 </tr>
                 </tfoot>
